@@ -1,3 +1,8 @@
+import Pkg
+Pkg.add("HDF5")
+Pkg.add("FFTW")
+Pkg.add("LinearAlgebra")
+
 using HDF5
 using Base
 using FFTW

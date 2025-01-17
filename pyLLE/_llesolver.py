@@ -718,7 +718,8 @@ class LLEsolver(object):
             for key, it in self._res.items():
                 if not key == "domega_disp":
                     if type(it) is str:
-                        it = np.string_(it)
+                        # it = np.string_(it)
+                        it = np.bytes_(it)  ## JB modified
                     if type(it) is list:
                         if None in it:
                             it = [0 if iitt is None else iitt for iitt in it]
@@ -831,7 +832,6 @@ class LLEsolver(object):
                     pass
                     # print('line 654')
                     # print(e)
-
             # fetch if any errors:
             err = False
             if not self.JuliaSolver.poll() == None:
@@ -882,7 +882,6 @@ class LLEsolver(object):
                 print("-" * 70)
                 if self._debug:
                     self._logger.info("LLEsovler.SolveTemporal", time_taken)
-
         DisplaySim()
         time.sleep(2)
         JuliaLog, start_time = LaunchJulia(bin)
